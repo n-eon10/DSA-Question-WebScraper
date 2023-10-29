@@ -63,5 +63,18 @@ def get_question_info_from_title(question_title_slug: str):
 
     return difficulty, title, description, constraints
 
+def get_all_question_slugs():
+    
+    response = requests.get("https://leetcode.com/api/problems/all/", timeout=10)
+    
+    if response.status_code != 200:
+        logger.exception("file: cogs/questions.py ~ An error occurred while trying to get the question from LeetCode. Error code: %s", response.status_code)
+        return []
+
+    data = response.json()
+
+    question_slugs = [question['stat']['question__title_slug'] for question in data['stat_status_pairs']]
+
+    print(len(question_slugs))
 
 get_all_question_slugs()
