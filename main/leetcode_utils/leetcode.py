@@ -71,6 +71,4 @@ def get_all_question_slugs():
     question_slugs = [question['stat']['question__title_slug'] for question in data['stat_status_pairs']] 
     question_slugs.reverse()
 
-    print(question_slugs[0:100])
-
     return question_slugs
