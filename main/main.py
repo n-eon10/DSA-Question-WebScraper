@@ -23,7 +23,7 @@ def main():
 
     cursor = connection.cursor()
 
-    question_slugs = get_all_question_slugs()[0: 100]
+    question_slugs = get_all_question_slugs()[0: 20]
 
     print("Hacking into the mainframe!")
     added_count = 0
@@ -52,6 +52,7 @@ def main():
       cursor.close()
     if connection:
       connection.close()
+      print("Finished scraping questions")
       print("PostgreSQL connection is closed")
 
 if __name__ == "__main__":
